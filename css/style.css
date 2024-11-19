@@ -1,0 +1,291 @@
+:root {
+    --primary-color: #007AFF;
+    --primary-gradient: linear-gradient(135deg, #0A84FF 0%, #0066CC 100%);
+    --background-color: #F2F2F7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+}
+
+/* 顶部标题栏 */
+.header {
+    background: var(--primary-gradient);
+    padding: 20px 15px;
+    text-align: center;
+    color: white;
+}
+
+.header h1 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.sos-banner {
+    background: rgba(255, 255, 255, 0.2);
+    margin: 10px 15px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* 搜索框 */
+.search-box {
+    padding: 15px;
+    background: #f5f5f5;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+}
+
+/* 主功能区 */
+.main-functions {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 60px;
+}
+
+.function-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.function-row:last-child {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.function-item {
+    background: white;
+    border-radius: 12px;
+    padding: 15px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.function-item:active {
+    transform: scale(0.96);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d4c4b7;
+}
+
+.icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.function-item span {
+    font-size: 13px;
+    color: #666;
+}
+
+/* 点击涟漪效果 */
+.function-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(0, 122, 255, 0.3);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.function-item:active::after {
+    animation: ripple 0.4s ease-out;
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #d4c4b7;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 8px 0;
+    color: white;
+}
+
+.nav-item {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+}
+
+.nav-item:active {
+    transform: scale(0.9);
+}
+
+/* 登录模态框 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    width: 85%;
+    max-width: 320px;
+}
+
+.modal-content h2 {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background: var(--background-color);
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    color: var(--text-primary);
+}
+
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.form-group button:active {
+    transform: scale(0.96);
+    background: var(--primary-gradient);
+    opacity: 0.8;
+}
+
+.login-tips {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* 加载动画 */
+.loading-overlay {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 122, 255, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 添加动画关键帧 */
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(40, 40);
+        opacity: 0;
+    }
+}
+ 
