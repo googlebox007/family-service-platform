@@ -1,1 +1,20 @@
-# family-service-platform
+# 计生特殊家庭服务平台
+
+一个基于 Web 的服务平台，为计生特殊家庭提供便捷的服务访问。
+
+## 功能特点
+
+- 档案管理
+- 任务跟踪
+- 探访记录
+- 资源调配
+- 追踪回访
+- 意见建议
+
+## 在线访问
+
+访问地址：https://googlebox007.github.io/family-service-platform
+
+## 本地开发
+
+1. 克隆仓库：
